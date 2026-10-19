@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Download ZeeBOT, a free offline reference assistant for Windows.">
+<title>ZeeBOT Download</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column like a field manual page; a highway-sign green band for the hero, steps as a real numbered sequence. */
+:root {
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --ink: #17211d;
+  --muted: #55625c;
+  --line: #d5dcd8;
+  --sign: #0f5b3e;          /* highway guide-sign green */
+  --sign-ink: #ffffff;
+  --accent: #f2b705;        /* work-zone amber */
+  --accent-ink: #1b1600;
+  --win: #0a5fb4;           /* SmartScreen dialog blue */
+  --win-ink: #ffffff;
+  --preview-bg: #fff4cc;
+  --preview-ink: #5b4500;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1513; --surface: #17201c; --ink: #e6ece9; --muted: #9aa8a1; --line: #2a3631;
+    --sign: #0d4a33; --sign-ink: #f2f6f4; --accent: #f5c330; --accent-ink: #1b1600;
+    --win: #1f6fc0; --win-ink: #ffffff; --preview-bg: #3a3010; --preview-ink: #f5dc8a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1513; --surface: #17201c; --ink: #e6ece9; --muted: #9aa8a1; --line: #2a3631;
+  --sign: #0d4a33; --sign-ink: #f2f6f4; --accent: #f5c330; --accent-ink: #1b1600;
+  --win: #1f6fc0; --win-ink: #ffffff; --preview-bg: #3a3010; --preview-ink: #f5dc8a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: 2rem; letter-spacing: .01em; }
+p { margin: 0; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.mono { font-family: var(--font-mono); font-size: .85em; }
+
+.preview-bar { background: var(--preview-bg); color: var(--preview-ink); font-size: .9rem; }
+.preview-bar .wrap { padding-block: 8px; }
+
+/* Hero: guide sign */
+.hero { background: var(--sign); color: var(--sign-ink); }
+.hero .wrap { padding-block: 48px 40px; display: grid; gap: 20px; }
+.sign-plate { border: 3px solid currentColor; border-radius: 12px; padding: 20px 22px; display: grid; gap: 10px; }
+.eyebrow { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: .95rem; opacity: .85; }
+.hero h1 { font-size: clamp(3rem, 11vw, 5rem); font-weight: 700; letter-spacing: .01em; }
+.hero .lede { font-size: 1.2rem; max-width: 34em; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--accent-ink); font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: .02em; text-decoration: none; padding: 12px 22px; border-radius: 8px; }
+.btn:hover { filter: brightness(1.05); }
+.btn svg { width: 22px; height: 22px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: .85rem; opacity: .9; list-style: none; padding: 0; margin: 0; }
+
+main .wrap { display: grid; gap: 56px; padding-block: 48px 64px; }
+section { display: grid; gap: 16px; }
+.sub { color: var(--muted); }
+
+/* Video placeholder */
+.video { position: relative; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, var(--sign), #08291c); color: #fff; display: grid; place-items: center; text-decoration: none; }
+.video .play { width: 78px; height: 78px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.video .play svg { width: 30px; height: 30px; margin-left: 5px; fill: var(--accent-ink); }
+.video .tag { position: absolute; left: 14px; bottom: 12px; font-family: var(--font-mono); font-size: .8rem; background: rgba(0,0,0,.45); padding: 3px 8px; border-radius: 4px; }
+.video .tag.r { left: auto; right: 14px; }
+
+/* Install steps: a real sequence */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; counter-reset: step; }
+.steps > li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; counter-increment: step; }
+.steps > li::before { content: counter(step); font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--sign); color: var(--ink); display: grid; place-items: center; }
+.steps .body { min-width: 0; display: grid; gap: 8px; padding-top: 6px; }
+.steps h3 { font-size: 1.35rem; }
+kbd { font-family: var(--font-body); font-weight: 600; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 6px; background: var(--surface); }
+
+/* SmartScreen mock */
+.smartscreen { background: var(--win); color: var(--win-ink); border-radius: 4px; padding: 22px 22px 16px; font-family: "Segoe UI", var(--font-body); display: grid; gap: 10px; max-width: 460px; }
+.smartscreen .t { font-size: 1.45rem; font-weight: 600; line-height: 1.2; }
+.smartscreen .s { font-size: .92rem; opacity: .95; }
+.smartscreen .more { text-decoration: underline; font-size: .92rem; position: relative; width: max-content; }
+.smartscreen .row { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.smartscreen .b { border: 2px solid rgba(255,255,255,.85); padding: 4px 18px; font-size: .9rem; }
+.smartscreen .b.run { position: relative; }
+.mark { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.callouts { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: .95rem; color: var(--muted); }
+.callouts b { color: var(--ink); }
+
+/* Privacy */
+.privacy { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; gap: 12px; }
+.privacy ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+
+/* References */
+.refs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.ref { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; text-decoration: none; display: grid; gap: 2px; background: var(--surface); }
+.ref:hover { border-color: var(--sign); }
+.ref b { font-family: var(--font-display); font-size: 1.3rem; }
+.ref span { color: var(--muted); font-size: .9rem; }
+
+.faq { display: grid; gap: 10px; }
+details { border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin-top: 6px; color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+footer .wrap { padding-block: 20px; }
+
+@media (max-width: 480px) {
+  .steps > li { grid-template-columns: 36px 1fr; gap: 12px; }
+  .steps > li::before { width: 36px; height: 36px; font-size: 1.2rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="sign-plate">
+      <div class="eyebrow">Free desktop app for Windows</div>
+      <h1>ZeeBOT</h1>
+      <p class="lede">Your reference assistant that runs entirely on your own PC. Totally offline: no account, no internet connection, nothing sent anywhere.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn" id="download" href="https://github.com/aizahidpervaiz/zeebot/releases/latest/download/ZeeBOT.Setup.1.0.0.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m6 10 6 6 6-6"/><path d="M4 20h16"/></svg>
+        Download for Windows
+      </a>
+      <ul class="facts">
+        <li>Version 1.0.0</li>
+        <li>161 MB</li>
+        <li>ZeeBOT.Setup.1.0.0.exe</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section id="video" aria-labelledby="video-h">
+      <h2 id="video-h">Watch the intro</h2>
+      <p class="sub">A walk through what ZeeBOT does and how to use it.</p>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/D8VRymu2-Pk" title="ZeeBOT intro video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></div>
+    </section>
+
+    <section id="install" aria-labelledby="install-h">
+      <h2 id="install-h">Install in three steps</h2>
+      <ol class="steps">
+        <li>
+          <div class="body">
+            <h3>Download the installer</h3>
+            <p>Click <b>Download for Windows</b>. Your browser saves <span class="mono">ZeeBOT.Setup.1.0.0.exe</span> (161 MB) to your Downloads folder. Open it when it finishes.</p>
+          </div>
+        </li>
+        <li>
+          <div class="body">
+            <h3>Get past the blue Windows warning</h3>
+            <p>ZeeBOT is new and not yet signed with a paid certificate, so Windows SmartScreen shows a blue box saying <b>Windows protected your PC</b>. This is normal for new apps.</p>
+            <div class="smartscreen" role="img" aria-label="Example of the Windows SmartScreen box, with the More info link and the Run anyway button highlighted">
+              <div class="t">Windows protected your PC</div>
+              <div class="s">Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk.</div>
+              <div class="more mark">More info</div>
+              <div class="s">App: ZeeBOT Setup 1.0.0.exe<br>Publisher: Unknown publisher</div>
+              <div class="row"><span class="b run mark">Run anyway</span><span class="b">Don't run</span></div>
+            </div>
+            <div class="callouts">
+              <span><b>First</b> click <kbd>More info</kbd></span>
+              <span><b>Then</b> click <kbd>Run anyway</kbd></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="body">
+            <h3>Finish setup and open ZeeBOT</h3>
+            <p>The installer puts ZeeBOT on your PC and adds a shortcut. From then on it works with no internet connection at all.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="privacy" aria-labelledby="privacy-h">
+      <div class="privacy">
+        <h2 id="privacy-h">Totally offline</h2>
+        <p>Once installed, ZeeBOT never needs the internet.</p>
+        <ul>
+          <li>Your questions stay on your PC.</li>
+          <li>Folders you open in ZeeBOT are read on your PC and never uploaded.</li>
+          <li>No account, no sign-in, no tracking.</li>
+        </ul>
+        <p class="sub">This page is only where you download the app. The app itself does not connect to it.</p>
+      </div>
+    </section>
+
+    <section id="refs" aria-labelledby="refs-h">
+      <h2 id="refs-h">Official standards</h2>
+      <p class="sub">ZeeBOT points you to these organizations. Their standards are not included in the app; get them from the source.</p>
+      <div class="refs">
+        <a class="ref" href="https://www.transportation.org/" target="_blank" rel="noopener"><b>AASHTO</b><span>transportation.org</span></a>
+        <a class="ref" href="https://www.concrete.org/" target="_blank" rel="noopener"><b>ACI</b><span>concrete.org</span></a>
+        <a class="ref" href="https://www.nettcp.org/" target="_blank" rel="noopener"><b>NETTCP</b><span>nettcp.org</span></a>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>My antivirus flagged the installer. Is it safe?</summary>
+          <p>Some antivirus programs are cautious about any new, unsigned app. If yours blocks it, choose its option to allow or restore the file, then run it again.</p>
+        </details>
+        <details>
+          <summary>How do I update?</summary>
+          <p>Come back here and download again. The button always gives you the newest version.</p>
+        </details>
+        <details>
+          <summary>Does it cost anything?</summary>
+          <p>No. ZeeBOT is free to download and use.</p>
+        </details>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer><div class="wrap">ZeeBOT 1.0.0 · Windows desktop app · Runs offline</div></footer>
+
+</body>
+</html>
